@@ -1,0 +1,39 @@
+/* src/App.css */
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.chat-history {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.chat-message {
+  margin: 10px 0;
+}
+
+.chat-message.user {
+  text-align: right;
+}
+
+.chat-message.bot {
+  text-align: left;
+}
+
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+}
