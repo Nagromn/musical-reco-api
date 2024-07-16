@@ -1,14 +1,15 @@
 import React from "react";
-import Chatbot from "./components/Chatbot";
-import "./App.css";
+import Chatbot from "./components/chatbot/Chatbot";
+import Header from "./components/header/Header";
+import "./App.scss";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Music Recommendation Chatbot</h1>
-      </header>
+    <div className="font-roboto bg-gradient-to-r from-pink-500 to-violet-600">
+      <Header />
       <Chatbot />
+      <Footer />
     </div>
   );
 };
