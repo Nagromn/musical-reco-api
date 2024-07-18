@@ -45,7 +45,7 @@ const Chatbot = () => {
 
   return (
     <>
-      <div className="h-screen">
+      <div data-testid="app-chatbot" className="h-screen">
         <div className="flex flex-col h-full">
           <div className="p-4 overflow-y-auto">
             {chatHistory.map((chat, index) => (
