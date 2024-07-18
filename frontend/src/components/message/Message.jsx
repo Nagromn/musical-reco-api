@@ -4,13 +4,16 @@ import UserIcon from "../../../public/assets/images/user.svg";
 
 const Message = ({ sender, message }) => {
   return (
-    <div className={`m-2 ${sender === "user" ? "text-right" : "text-left"}`}>
+    <div
+      data-testid="chatbot-message"
+      className={`m-2 ${sender === "user" ? "text-right" : "text-left"}`}
+    >
       <p>
         {sender === "user" ? (
           <>
             <img
               src={UserIcon}
-              alt="Bot Icon"
+              alt="User Icon"
               className="inline-block h-10 w-10 my-2 mr-2"
             />
             <strong>User :</strong>

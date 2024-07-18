@@ -2,7 +2,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="flex justify-center items-center h-24 text-white">
+    <div
+      data-testid="app-footer"
+      className="flex justify-center items-center h-24 text-white"
+    >
       <p className="text-center">
         &copy; {new Date().getFullYear()} Copyright |{" "}
         <a
