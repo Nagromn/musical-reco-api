@@ -22,10 +22,10 @@ const Chatbot = () => {
         message,
       });
 
-      const botMessage = response.data.message;
+      const { botMessage, youtubeResults } = response.data;
       setChatHistory([
         ...newChatHistory,
-        { sender: "bot", message: botMessage },
+        { sender: "bot", message: botMessage, youtubeResults },
       ]);
       setMessage("");
     } catch (error) {
@@ -53,6 +53,7 @@ const Chatbot = () => {
                 key={index}
                 sender={chat.sender}
                 message={chat.message}
+                youtubeResults={chat.youtubeResults}
               />
             ))}
             {loading && <Loader />}
