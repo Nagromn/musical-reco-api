@@ -5,7 +5,12 @@ const webpack = require("webpack");
 
 module.exports = (env) => {
   const isProduction = env.NODE_ENV === "production";
-  const dotenv = isProduction ? ".env.production" : ".env.development";
+  const isTesting = env.NODE_ENV === "test";
+  const dotenv = isProduction
+    ? ".env.production"
+    : isTesting
+    ? ".env.test"
+    : ".env.development";
 
   return {
     entry: "./src/index.js",

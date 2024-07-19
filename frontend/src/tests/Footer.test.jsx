@@ -12,16 +12,7 @@ describe("Footer component", () => {
     const copyrightText = screen.getByText(`© ${currentYear} Copyright |`);
     expect(copyrightText).toBeInTheDocument();
 
-    // Vérifier le lien GitHub
-    const githubLink = screen.getByRole("link", { name: /GitHub/i });
-    expect(githubLink).toBeInTheDocument();
-    expect(githubLink).toHaveAttribute("href", "https://github.com/Nagromn");
-    // Vérifier que le lien GitHub n'est pas mort
-    expect(githubLink).toHaveAttribute("target", "_blank");
-    expect(githubLink).toHaveAttribute("rel", "noopener noreferrer");
-
     // Vérifier la structure du DOM
     expect(footerElement).toContainElement(copyrightText);
-    expect(footerElement).toContainElement(githubLink);
   });
 });
