@@ -1,9 +1,13 @@
 import { expect } from "chai";
 import { describe, it, before, after } from "mocha";
-import { getRecommendation } from "../api/api.service.mjs";
+import axios from "axios";
 import logger from "../logger.mjs";
 import { RESET, FG_RED, FG_BLUE, FG_MAGENTA } from "../color.mjs";
+import dotenv from "dotenv";
 
+dotenv.config();
+
+const baseUrl = `${process.env.SERVER_URL}:${process.env.PORT}`;
 let startTime;
 let endTime;
 
@@ -23,19 +27,25 @@ describe("Recommendation API", function () {
   });
 
   it("should respond with recommended music", async function () {
-    this.timeout(10000);
-
     try {
       const genre = "rock";
-      const recommendedMusic = await getRecommendation(genre);
+      const response = await axios.post(`${baseUrl}/api/recommend`, {
+        message: genre,
+      });
 
       logger.info(
-        `${FG_MAGENTA}Recommended music based on genre:, ${recommendedMusic}${RESET}`
+        `${FG_MAGENTA}Recommended music :, ${JSON.stringify(
+          response.data
+        )}${RESET}`
       );
 
-      expect(recommendedMusic).to.be.a("string");
+      expect(response.status).to.equal(200);
+      expect(response.data).to.have.property("botMessage");
+      expect(response.data).to.have.property("youtubeResults");
+      expect(response.data.botMessage).to.be.a("string");
+      expect(response.data.youtubeResults).to.be.an("array");
     } catch (error) {
-      logger.error("Error during genre recommendation test:", error);
+      logger.error("Error during recommendation test:", error);
       throw error;
     }
   });
